@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'qr_codes/new'
+
+  get 'qr_codes/create'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -19,9 +23,15 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :qr_codes, only: [:new, :create]
+  root to: "qr_codes#new"
 
 
   SampleApp::Application.routes.draw do
+  get 'qr_codes/new'
+
+  get 'qr_codes/create'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
