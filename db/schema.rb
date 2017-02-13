@@ -10,7 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210004255) do
+ActiveRecord::Schema.define(version: 20170210021324) do
+
+  create_table "collars", force: :cascade do |t|
+    t.integer  "registered_pet_id"
+    t.integer  "price"
+    t.string   "size"
+    t.string   "category"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["registered_pet_id"], name: "index_collars_on_registered_pet_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer  "price"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registered_pets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "pet_name"
+    t.integer  "pet_age"
+    t.string   "pet_disease"
+    t.string   "pet_vaccines"
+    t.text     "pet_info"
+    t.string   "owner_name"
+    t.integer  "owner_phone"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_registered_pets_on_user_id"
+  end
+
+  create_table "user_products", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_user_products_on_product_id"
+    t.index ["user_id"], name: "index_user_products_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -28,4 +68,5 @@ ActiveRecord::Schema.define(version: 20170210004255) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+end
 end
