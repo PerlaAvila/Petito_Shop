@@ -43,6 +43,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.2)
       execjs
+    barby (0.6.5)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
@@ -304,8 +305,13 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     ref (2.0.0)
+    rqrcode (0.10.1)
+      chunky_png (~> 1.0)
     rqrcode-with-patches (0.5.5)
       chunky_png
+    rqrcode_png (0.1.5)
+      chunky_png
+      rqrcode
     ruby-progressbar (1.8.1)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -356,6 +362,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  barby (~> 0.6.2)
   bcrypt (= 3.1.11)
   bootstrap-sass (= 3.3.6)
   bootstrap-will_paginate (= 0.0.10)
@@ -376,6 +383,7 @@ DEPENDENCIES
   rails (= 5.0.1)
   rails-controller-testing (= 0.1.1)
   rqrcode-with-patches (~> 0.5.4)
+  rqrcode_png
   sass-rails (= 5.0.6)
   spring (= 1.7.2)
   spring-watcher-listen (= 2.0.0)
@@ -388,4 +396,4 @@ DEPENDENCIES
   will_paginate (= 3.1.0)
 
 BUNDLED WITH
-   1.12.5
+   1.14.4
