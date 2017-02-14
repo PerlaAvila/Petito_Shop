@@ -21,15 +21,21 @@ ActiveRecord::Schema.define(version: 20170214004339) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer  "cart_id"
-    t.string   "name"
-    t.decimal  "price",      precision: 12, scale: 3
+  create_table "collars", force: :cascade do |t|
+    t.integer  "registered_pet_id"
+    t.integer  "price"
+    t.string   "size"
     t.string   "category"
-    t.integer  "stock"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["cart_id"], name: "index_products_on_cart_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["registered_pet_id"], name: "index_collars_on_registered_pet_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer  "price"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "registered_pets", force: :cascade do |t|
@@ -44,6 +50,15 @@ ActiveRecord::Schema.define(version: 20170214004339) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_registered_pets_on_user_id"
+  end
+
+  create_table "user_products", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_user_products_on_product_id"
+    t.index ["user_id"], name: "index_user_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
