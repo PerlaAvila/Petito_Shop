@@ -22,13 +22,13 @@
               <li><a href="#">Cat's collars</a></li>
               <li><a href="#">Dog's collars</a></li>
               <li><a href="#">Cat products</a></li>
-              <% if logged_in? %>
-              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
             </ul>
-            </li>
-             <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-             <% end %>
+            <li><%= link_to "Sign up", signup_path %></li>
+              <% if logged_in? %>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              <% else %>
+                <li><%= link_to "Log in", login_path %></li>
+              <% end %>
            </ul>
           </div>
       </div>
