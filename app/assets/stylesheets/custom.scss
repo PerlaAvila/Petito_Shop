@@ -130,6 +130,24 @@ p {
   }
 }
 
+/* shopping table */
+
+.table-half{
+ width:50%;
+}
+
+.img-size{
+  height: 100px;
+  width: 100px;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+ .table-half{
+  width:70%;
+ }
+}
 
 /* footer */
 
