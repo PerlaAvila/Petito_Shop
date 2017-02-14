@@ -46,9 +46,6 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def register
-    @user = User.new
-  end
 
   private
 
