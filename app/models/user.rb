@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :cart
   has_many :registered_pets
   has_many :user_products
   has_many :products, :through => :user_products

@@ -3,7 +3,11 @@
 one:
   user: one
   product: one
+  quantity: 1
+  total: 1
 
 two:
   user: two
   product: two
+  quantity: 1
+  total: 1
