@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
+  get 'products/index'
+
   get 'qr_codes/new'
-
   get 'qr_codes/create'
-
   get 'password_resets/new'
-
   get 'password_resets/edit'
-
   get 'sessions/new'
-
   get 'users/new'
 
   root 'static_pages#home'
@@ -28,6 +25,8 @@ Rails.application.routes.draw do
 
 
   SampleApp::Application.routes.draw do
+  get 'products/index'
+
   get 'qr_codes/new'
 
   get 'qr_codes/create'

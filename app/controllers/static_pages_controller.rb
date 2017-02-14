@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   
   def home
+    @products = Product.all
   end
 
   def help
@@ -11,5 +12,6 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
   
 end
