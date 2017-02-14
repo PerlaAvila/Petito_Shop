@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   root to: "qr_codes#new"
 
 
+  post '/register', to: 'users#register'
+
+
   SampleApp::Application.routes.draw do
   get 'products/index'
 

@@ -1,5 +1,5 @@
 
-    <h1>PETITO</h1>
+<h1>PETITO</h1>
 
   <% if logged_in? %>
     <% @products.each do |product| %>
@@ -70,11 +70,7 @@
           </table>
       </div>
       <!--/Shopping Cart table-->
-         
-        
+                 
   <% end %>
 
-
-
-
-
+<%= button_to "Registra tu mascota", register_path, method: :post %>
