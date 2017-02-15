@@ -24,3 +24,5 @@ User.create!(name:  "Example User",
                activated: true,
                activated_at: Time.zone.now)
 end
+
+Product.create!(name: "collar", price: 200, category: "dog", )
