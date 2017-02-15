@@ -25,4 +25,7 @@ User.create!(name:  "Example User",
                activated_at: Time.zone.now)
 end
 
-Product.create!(name: "collar", price: 200, category: "dog", )
+Product.create!(name: "collar", price: 200, category: "dog", stock: 5 )
+Product.create!(name: "collar", price: 150, category: "cat", stock: 5 )
+Product.create!(name: "collar", price: 300, category: "dog", stock: 5 )
+Product.create!(name: "collar", price: 100, category: "cat", stock: 5 )

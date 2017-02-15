@@ -2,10 +2,22 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
+        <br>
+          <% if @user.registered_pets.empty? %>
+            <h3> Aún no tienes mascotas registradas </h3>
+          <% else %>
+            <div id="user-pets">
+              <% @user.registered_pets.each do |pet| %>
+                <%= link_to "#{pet.pet_name}",registered_pet_path(pet) %>
+                <br>
+              <% end %>  
+            </div>
+          <% end %> 
+
+        <%= link_to "Registra tu mascota", new_registered_pet_path %>
+
     </section>
   </aside>
 </div>

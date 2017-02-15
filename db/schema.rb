@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170214004339) do
     t.string   "pet_vaccines"
     t.text     "pet_info"
     t.string   "owner_name"
-    t.integer  "owner_phone"
+    t.string   "owner_phone"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["user_id"], name: "index_registered_pets_on_user_id"

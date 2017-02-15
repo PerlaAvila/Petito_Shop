@@ -12,6 +12,58 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+.navbar {
+  background-color: #0abab5;
+
+  width: 100%;
+}
+
+#navbar li{
+  font-family: 'Alegreya Sans';
+  font-size: 1.5em;
+}
+
+li a{
+
+  color: white;
+}
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px;
+  width: auto;
+}
+
+.navbar-alignit .navbar-header {
+    -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 50px;
+}
+.navbar-alignit .navbar-brand {
+  top: 50%;
+  display: block;
+  position: relative;
+  height: auto;
+  transform: translate(0,-50%);
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+
+
+
+
+.navbar-nav>li>.dropdown-menu {
+  z-index: 9999;
+}
+
+body {
+  font-family: "Lato";
+}
 
 /* universal */
 
@@ -81,7 +133,7 @@ p {
 /* shopping table */
 
 .table-half{
- width:50%;
+ width:100%;
 }
 
 .img-size{
