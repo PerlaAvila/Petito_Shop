@@ -1,6 +1,6 @@
 <h1>PETITO</h1>
 
-  <% if logged_in? %>
+ 
     <% @products.each do |product| %>
       <!--Shopping Cart table-->
       <div class="table-responsive">
@@ -69,7 +69,4 @@
           </table>
       </div>
       <!--/Shopping Cart table-->
-                 
-  <% end %>
 
-<%= button_to "Registra tu mascota", register_path, method: :post %>

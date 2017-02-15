@@ -1,0 +1,28 @@
+#pet-profile {
+  width: 75%;
+}
+
+.container {
+  padding: 1%
+}
+
+h4{
+  font-size: 3em;
+  font-family: "Lucida Sans";
+}
+
+#pet-profile ul li {
+  list-style: none;
+  font-size: 2em;
+  font-family: Verdana;
+}
+
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}

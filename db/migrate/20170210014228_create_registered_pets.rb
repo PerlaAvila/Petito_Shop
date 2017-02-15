@@ -8,7 +8,7 @@ class CreateRegisteredPets < ActiveRecord::Migration[5.0]
       t.string :pet_vaccines
       t.text :pet_info
       t.string :owner_name
-      t.integer :owner_phone
+      t.string :owner_phone
       t.timestamps
     end
   end

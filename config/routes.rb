@@ -21,14 +21,14 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :qr_codes, only: [:new, :create]
+  resources :registered_pets, only: [:new, :create, :edit, :show]
   root to: "qr_codes#new"
 
 
-  post '/register', to: 'users#register'
 
 
   SampleApp::Application.routes.draw do
-  get 'products/index'
+  get 'products/index', as: 'products'
 
   get 'qr_codes/new'
 
