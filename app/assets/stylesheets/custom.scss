@@ -11,6 +11,9 @@ $gray-medium-light: #eaeaea;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+.container {
+  margin-top: 1%;
+}
 
 .navbar {
   background-color: #0abab5;
@@ -299,3 +302,7 @@ table.qr-code td {
 }
 table.qr-code td.black { background-color: #000; }
 table.qr-code td.white { background-color: #fff; }
+
+#stock{
+  width: 10px;
+}

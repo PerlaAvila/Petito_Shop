@@ -17,12 +17,15 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :qr_codes, only: [:new, :create]
-  resources :registered_pets, only: [:new, :create, :edit, :show]
+  resources :registered_pets
   root to: "qr_codes#new"
+
+  # delete 'registered_pets/:id', to: 'registered_pets#destroy', as: 'delete_pet'
 
 
 

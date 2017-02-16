@@ -1,7 +1,6 @@
+<% provide(:title, 'Home') %>
 <h1>PETITO</h1>
 
- 
-    <% @products.each do |product| %>
       <!--Shopping Cart table-->
       <div class="table-responsive">
           <table class="table product-table table-half">
@@ -23,9 +22,9 @@
               <!--Table body-->
               <tbody>
 
+    <% @products.each do |product| %>
                   <!--First row-->
-                  <tr>
-                      
+                  <tr id="<%= product.name %>" value="<%= product.name %>"  >
                       <td>
                         <th scope="row">
                           <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/shoes.jpg" alt="" class="img-fluid img-size">
@@ -33,19 +32,17 @@
                       </td>
                       <td>Blue</td>
                       <td>38</td>
-                      <td>$<%= product.price %></td>
+                      <td id="<%= product.price %>" value="<%= product.price %>">$<%= product.price%></td>
                       <td>
-                          <span class="qty">1 </span>
+                          <input type="hidden" name="stock" id="stock-<%= product.id %>" value="<%= product.stock %>">
+                          <input type="hidden" name="price" id="price-<%= product.id %>" value="<%= product.price %>">
                           <div class="btn-group" data-toggle="buttons">
-                              <label class="btn btn-sm btn-primary btn-rounded">
-                                  <input type="radio" name="options" id="option1">&mdash;
-                              </label>
-                              <label class="btn btn-sm btn-primary btn-rounded">
-                                  <input type="radio" name="options" id="option2">+
-                              </label>
+                              <%= link_to '-', '#', class: 'btn btn-sm btn-primary btn-rounded btn-operators', data: { id: product.id, operation: "-" } %>
+                              <span id="quantity-<%= product.id %>" class="btn btn-sm btn-default btn-rounded">0</span>
+                              <%= link_to '+', '#', class: 'btn btn-sm btn-primary btn-rounded btn-operators', data: { id: product.id, operation: "+"} %>
                           </div>
                       </td>
-                      <td>$200</td>
+                      <td id="amount-<%= product.id %>" ></td>
                       <td>
                           <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Remove item">X
                           </button>
@@ -61,7 +58,7 @@
                           <h4><strong>Total</strong></h4></td>
                       <td>
                           <h4><strong>$1200</strong></h4></td>
-                      <td colspan="3"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></td>
+                      <td colspan="3"><button type="button" class="btn btn-primary">Complete purchase </button></td>
                   </tr>
                   <!--/Fourth row-->
               </tbody>
@@ -69,4 +66,5 @@
           </table>
       </div>
       <!--/Shopping Cart table-->
+
 

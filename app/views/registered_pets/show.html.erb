@@ -1,41 +1,40 @@
-<div class="container">
-  <div class="well well-sm">
+<% provide(:title, @pet.pet_name) %>
+<div class="container pet-profile">
     <div class="col-sm-6 col-md-4">
-        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+      <br>
+        <img src="https://scontent.fmex8-1.fna.fbcdn.net/v/t1.0-0/q83/p206x206/1386003_10152554262927897_7540127066626777477_n.jpg?oh=3249c42a01b945fcc87019cd63727d42&oe=593A273A"/>
     </div>
     <div class="col-sm-6 col-md-8">
         <h4> <%= @pet.pet_name %></h4>
         <small><cite title="Cuidad de México">Ciudad de México, Mx<i class="glyphicon glyphicon-map-marker">
         </i></cite></small>
         <p>
-            <i class="glyphicon glyphicon-time"></i><%= @pet.pet_age %>
+            <i class="glyphicon glyphicon-time"></i><b>Edad:</b> <%= @pet.pet_age %>
             <br />
-            <i class="glyphicon glyphicon-plus-sign"></i><%= @pet.pet_disease %>
+            <i class="glyphicon glyphicon-plus-sign"></i><b>Enfermedades:</b> <%= @pet.pet_disease %>
             <br />
-            <i class="glyphicon glyphicon-briefcase"></i><%= @pet.pet_vaccines %>
+            <i class="glyphicon glyphicon-briefcase"></i><b>Vacunas:</b> <%= @pet.pet_vaccines %>
             <br />
-            <i class="glyphicon glyphicon-comment"></i><%= @pet.pet_info %>
+            <i class="glyphicon glyphicon-comment"></i><b>Comentarios:</b> <%= @pet.pet_info %>
             <br />
-            <i class="glyphicon glyphicon-user"></i><%= @pet.owner_name %>
+            <i class="glyphicon glyphicon-user"></i><b>Contacto:</b> <%= @pet.owner_name %>
             <br />
-            <i class="glyphicon glyphicon-earphone"></i><%= @pet.owner_phone %></p>
-        <!-- Split button -->
+            <i class="glyphicon glyphicon-earphone"></i><b>Teléfono:
+          </b> <%= @pet.owner_phone %></p>
+
+
         <% if current_user == @user %>
         <div class="btn-group">
             <button type="button" class="btn btn-primary">
-                Social</button>
+                Settings</button>
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span><span class="sr-only">Social</span>
+                <span class="caret"></span><span class="sr-only">Settings</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Twitter</a></li>
-                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Github</a></li>
+                <li><%= link_to "Edit", edit_registered_pet_path(@pet) %></li>
+                <li> <%= link_to "Borrar", registered_pet_path(@pet), method: :delete, data: { confirm: "You sure?" } %></li>
             </ul>
         </div>
         <% end %>
-    </div>
     </div>
 </div>
