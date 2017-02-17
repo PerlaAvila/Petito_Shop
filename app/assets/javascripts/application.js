@@ -18,8 +18,7 @@
 
 $(document).ready(function(){
 
-  
-  $('.btn-operators').on("click", function(event){
+  $(document).on("click", '.btn-operators', function(event){
     event.preventDefault();
     id = $(this).data('id');
     operation = $(this).data('operation');
@@ -28,22 +27,31 @@ $(document).ready(function(){
     amount = parseFloat($('#amount-' + id).text());
     stock = parseFloat($('#stock-' + id).val());
     total = parseFloat($('#total').text());
+    console.log(quantity);
     if (operation == "+") {
       addProduct(stock, quantity, price, total, id);
+      
     } else {
       removeProduct(stock, quantity, price, total, id);
+      
     }
 
   });
 
   function addProduct(stock, quantity, price, total, id) {
     if ( isNaN(quantity) ) { quantity = 0 }
-    if(stock >= 1){
+    if(stock > 0){
       quantity++;
       $('#stock-' + id).val(stock - 1);
       $('#quantity-' + id).text(quantity); 
       $('#amount-' + id).text(quantity * price);
-      $('#total').text(total + price);
+      totalAmount = total + price;
+      $('#total').text(totalAmount);
+      $.ajax({
+        method: "POST",
+        url: "products_in_carts",
+        data: { product_id: id, quantity_product: quantity, total_price: totalAmount }
+      })
     } else {
       alert("Ya no hay productos");
     }
@@ -57,7 +65,13 @@ $(document).ready(function(){
       $('#stock-' + id).val(stock + 1);
       $('#quantity-' + id).text(quantity); 
       $('#amount-' + id).text(quantity * price);
-      $('#total').html(total - price);
+      totalAmount = total - price;
+      $('#total').html(totalAmount);
+      $.ajax({
+        method: "POST",
+        url: "products_in_carts",
+        data: { product_id: id, quantity_product: quantity, total_price: totalAmount }
+      })
     }
   } 
 });

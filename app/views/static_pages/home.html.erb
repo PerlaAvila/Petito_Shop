@@ -57,7 +57,10 @@
                           <h4><strong>Total</strong></h4></td>
                       <td>
                           <h4 id="total"><strong>0</strong></h4></td>
-                      <td colspan="3"><button type="button" class="btn btn-primary">Complete purchase  <i class="fa fa-angle-right right"></i></button></td>
+                      <td colspan="3">
+                        <%= session[:cart_id] %>
+                      <%= button_to 'Complete purchase', products_in_carts_path, class: 'btn btn-primary completepurchase'   %>
+                    </td>
                   </tr>
                   <!--/Fourth row-->
               </tbody>

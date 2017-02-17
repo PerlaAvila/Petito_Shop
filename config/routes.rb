@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'products/index'
 
   get 'qr_codes/new'
   get 'qr_codes/create'
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   get 'users/new'
+
 
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :qr_codes, only: [:new, :create]
   resources :registered_pets, only: [:new, :create, :edit, :show]
+  resources :products, only: [:new]
+  resources :products_in_carts, only: [:new, :create]
   root to: "qr_codes#new"
 
 

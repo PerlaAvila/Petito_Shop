@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :cart
+  has_many :cart
   has_many :registered_pets
   has_many :user_products
   has_many :products, :through => :user_products
@@ -69,6 +69,10 @@ class User < ApplicationRecord
     # Returns true if a password reset has expired.
     def password_reset_expired?
       reset_sent_at < 2.hours.ago
+    end
+
+    def cart?
+      Cart.find_or_create_by(user_id: id)
     end
 
     private
