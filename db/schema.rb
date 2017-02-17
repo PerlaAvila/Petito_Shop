@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170216195139) do
 
   create_table "registered_pets", force: :cascade do |t|
     t.integer  "user_id"
+    t.boolean  "alert",        default: false
     t.string   "location"
     t.string   "pet_name"
     t.integer  "pet_age"
@@ -42,8 +43,8 @@ ActiveRecord::Schema.define(version: 20170216195139) do
     t.text     "pet_info"
     t.string   "owner_name"
     t.string   "owner_phone"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "avatar"
     t.index ["user_id"], name: "index_registered_pets_on_user_id"
   end

@@ -1,4 +1,4 @@
-<%= form_for(@pet) do |f| %>
+<div id="picture-form"><%= form_for(@pet) do |f| %>
   
   <% if @pet.errors.any? %>
     <div id="error_explanation">
@@ -14,5 +14,6 @@
     <%= f.label :foto %><br>
     <%= f.file_field :avatar %>
 
-  <%= f.submit "Guardar", class: "btn btn-primary" %>
+  <%= f.submit "Subir foto", class: "btn btn-primary" %>
 <% end %>
+</div>

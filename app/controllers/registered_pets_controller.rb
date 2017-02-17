@@ -46,8 +46,12 @@ class RegisteredPetsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def delete_picture
-    puts params
+  def destroy_avatar
+    @pet = RegisteredPet.find(params[:id])
+    @pet.remove_avatar!
+    @pet.save
+    flash[:success] = "Avatar deleted"
+    redirect_to registered_pet_path
   end
 
   private

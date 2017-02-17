@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   resources :qr_codes, only: [:new, :create]
   resources :registered_pets
 
+  delete 'avatar/:id', to: 'registered_pets#destroy_avatar', as: 'avatar'
+ 
+
+
 
   SampleApp::Application.routes.draw do
   get 'products/index', as: 'products'
