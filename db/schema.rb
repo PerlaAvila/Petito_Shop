@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214004339) do
+ActiveRecord::Schema.define(version: 20170216195139) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,15 +34,17 @@ ActiveRecord::Schema.define(version: 20170214004339) do
 
   create_table "registered_pets", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "location"
     t.string   "pet_name"
     t.integer  "pet_age"
     t.string   "pet_disease"
     t.string   "pet_vaccines"
     t.text     "pet_info"
     t.string   "owner_name"
-    t.integer  "owner_phone"
+    t.string   "owner_phone"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "avatar"
     t.index ["user_id"], name: "index_registered_pets_on_user_id"
   end
 

@@ -1,10 +1,22 @@
 <% provide(:title, @pet.pet_name) %>
 <div class="container pet-profile">
     <div class="col-sm-6 col-md-4">
-      <br>
-        <img src="https://scontent.fmex8-1.fna.fbcdn.net/v/t1.0-0/q83/p206x206/1386003_10152554262927897_7540127066626777477_n.jpg?oh=3249c42a01b945fcc87019cd63727d42&oe=593A273A"/>
+        <% if @pet.avatar.file.nil? && current_user == @user %> 
+           <%= render 'picture' %>
+        <% elsif @pet.avatar && current_user == @user %>
+           <%= image_tag @pet.avatar.thumb.url %>
+           <br>
+           <br>
+           <div class="btn-group">
+               <%= link_to "Editar foto", edit_registered_pet_path(@pet), class: "btn btn-primary" %>
+           </div>     
+        <% elsif @pet.avatar.file.nil? %> 
+           <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />  
+        <% else %>
+          <%= image_tag @pet.avatar.thumb.url %>
+        <% end %>
     </div>
-    <div class="col-sm-6 col-md-8">
+    <div class="col-sm-6 col-md-8" style="padding-left: 5%;">
         <h4> <%= @pet.pet_name %></h4>
         <small><cite title="Cuidad de México">Ciudad de México, Mx<i class="glyphicon glyphicon-map-marker">
         </i></cite></small>

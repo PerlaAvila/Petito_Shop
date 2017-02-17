@@ -1,0 +1,42 @@
+
+<%= form_for(@pet) do |f| %>
+  
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+ 
+      <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :nombre %>
+  <%= f.text_field :pet_name, class: 'form-control' %>
+
+  <%= f.label :edad %>
+  <%= f.text_field :pet_age, class: 'form-control' %>
+
+  <%= f.label :enfermedades %>
+  <%= f.text_field :pet_disease, class: 'form-control' %>
+
+  <%= f.label :vacunas %>
+  <%= f.text_field :pet_vaccines, class: 'form-control' %>
+
+  <%= f.label :comentarios %>
+  <%= f.text_area :pet_info, class: 'form-control' %>
+
+
+  <%= f.label :contacto %>
+  <%= f.text_field :owner_name, class: 'form-control' %>
+
+  <%= f.label :telefono %>
+  <%= f.phone_field :owner_phone, class: 'form-control' %>
+   
+    <%= f.label :foto %><br>
+    <%= f.file_field :avatar %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

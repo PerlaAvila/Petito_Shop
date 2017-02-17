@@ -4,25 +4,15 @@ class RegisteredPetsController < ApplicationController
   end
 
   def create
-    @pet = RegisteredPet.new(pet_params)
-    # puts pet_params
-    # pet_params.pet_name
-    # if @pet.save
-    #   puts "*" * 50
-    #   flash[:info] = "Tu registro se creó exitosamente!"
-    #   redirect_to registered_pet_path(@pet.id)
-    # else
-    #   render 'new'
-    # end
     parameters = params[:registered_pet]
-    user = current_user.id
-    @pet = RegisteredPet.new(user_id: user, pet_name: parameters[:pet_name], pet_age: parameters[:pet_age], pet_disease: parameters[:pet_disease], pet_vaccines: parameters[:pet_vaccines], pet_info: parameters[:pet_info], owner_name: parameters[:owner_name], owner_phone: parameters[:owner_phone])
-
+    user = current_user
+    @pet = RegisteredPet.new(registered_pet_params)
     if @pet.save
+      user.registered_pets << @pet
       flash[:success] = "Mascota registrada exitosamente"
       redirect_to @pet
     else
-      render 'new'
+      render 'form'
     end
   end
 
@@ -35,13 +25,14 @@ class RegisteredPetsController < ApplicationController
   def edit
     @pet = RegisteredPet.find(params[:id])
       unless current_user == @pet.user
-        redirect_to(@pet, notice: "No puedes editar a esta mascota") and return
+        flash[:danger] = "No puedes editar a esta mascota"
+        redirect_to @pet
       end
   end
 
   def update
     @pet = RegisteredPet.find(params[:id])
-    if @pet.update_attributes(pet_params)
+    if @pet.update_attributes(registered_pet_params)
       flash[:success] = "Cambios guardados exitosamente!"
       redirect_to @pet
     else
@@ -55,15 +46,21 @@ class RegisteredPetsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def delete_picture
+    puts params
+  end
 
   private
-    def pet_params
-      params.require(:registered_pet).permit(:pet_name, :pet_age, :pet_disease, :pet_vaccines, :pet_info, :owner_name, :owner_phone)
+
+
+    def registered_pet_params
+      params.require(:registered_pet).permit(:pet_name, :pet_age, :pet_disease, :pet_vaccines, :pet_info, :owner_name, :owner_phone, :avatar)
     end
+
 
     def must_be_owner
     unless current_user && @pet.user
       redirect_to show_path(@pet), notice: "No tienes los permisos para hacer esto"
     end
-  end
+    end
 end
