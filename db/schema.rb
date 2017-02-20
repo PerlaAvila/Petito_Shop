@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216195139) do
+ActiveRecord::Schema.define(version: 20170216235041) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,14 +22,24 @@ ActiveRecord::Schema.define(version: 20170216195139) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer  "cart_id"
+    t.integer  "products_in_cart_id"
     t.string   "name"
-    t.decimal  "price",      precision: 12, scale: 3
+    t.decimal  "price",               precision: 12, scale: 3
     t.string   "category"
     t.integer  "stock"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["cart_id"], name: "index_products_on_cart_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.index ["products_in_cart_id"], name: "index_products_on_products_in_cart_id"
+  end
+
+  create_table "products_in_carts", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "total_quantity"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["cart_id"], name: "index_products_in_carts_on_cart_id"
+    t.index ["product_id"], name: "index_products_in_carts_on_product_id"
   end
 
   create_table "registered_pets", force: :cascade do |t|

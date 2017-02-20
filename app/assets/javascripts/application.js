@@ -18,9 +18,7 @@
 
 $(document).ready(function(){
 
-  $('#amountprice').html("$" + 0);
-
-  $('.btn-operators').on("click", function(event){
+  $(document).on("click", '.btn-operators', function(event){
     event.preventDefault();
     id = $(this).data('id');
     operation = $(this).data('operation');
@@ -28,25 +26,37 @@ $(document).ready(function(){
     price = parseFloat($('#price-' + id).val());
     amount = parseFloat($('#amount-' + id).text());
     stock = parseFloat($('#stock-' + id).val());
+    total = parseFloat($('#total').text());
+    console.log(quantity);
     if (operation == "+") {
-      addProduct(stock, quantity, price, id);
+      addProduct(stock, quantity, price, total, id);
+      
     } else {
-      removeProduct(stock, quantity, price, id);
+      removeProduct(stock, quantity, price, total, id);
+      
     }
+
   });
 
-  function addProduct(stock, quantity, price, id) {
+  function addProduct(stock, quantity, price, total, id) {
     if ( isNaN(quantity) ) { quantity = 0 }
-    if(stock >= 1){
+    if(stock > 0){
       quantity++;
       $('#stock-' + id).val(stock - 1);
       $('#quantity-' + id).text(quantity); 
       $('#amount-' + id).text(quantity * price);
+      totalAmount = total + price;
+      $('#total').text(totalAmount);
+      $.ajax({
+        method: "POST",
+        url: "products_in_carts",
+        data: { product_id: id, quantity_product: quantity, total_price: totalAmount }
+      })
     } else {
       alert("Ya no hay productos");
     }
   } 
-  function removeProduct(stock, quantity, price, id) {
+  function removeProduct(stock, quantity, price, total, id) {
     if ( isNaN(quantity) ) { quantity = 0 }
     if ( quantity == 0 ) { 
       alert("Ya quitaste todos los productos")
@@ -55,15 +65,13 @@ $(document).ready(function(){
       $('#stock-' + id).val(stock + 1);
       $('#quantity-' + id).text(quantity); 
       $('#amount-' + id).text(quantity * price);
+      totalAmount = total - price;
+      $('#total').html(totalAmount);
+      $.ajax({
+        method: "POST",
+        url: "products_in_carts",
+        data: { product_id: id, quantity_product: quantity, total_price: totalAmount }
+      })
     }
   } 
-
-  $('.btn-minus').on("click", function(){
-   event.preventDefault();
-   console.log(id); 
-  });
-
-
-
-
 });
