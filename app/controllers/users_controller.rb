@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.addresses.first.build
   end
 
   def index
@@ -17,6 +18,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    puts "USER PARAMS"
+    p user_params
     if @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
@@ -50,7 +53,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, addresses_attributes: [:id, :full_name, :country, :zip, :state, :city, :province, :street, :number, :int, :tel])
     end
 
     def logged_in_user

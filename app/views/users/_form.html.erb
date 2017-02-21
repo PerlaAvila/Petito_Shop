@@ -1,17 +1,53 @@
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
-  <%= f.label :name %>
+  <%= f.label :nombre %>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :email %>
+  <%= f.label :correo_electronico %>
   <%= f.email_field :email, class: 'form-control' %>
 
-  <%= f.label :password %>
+  <%= f.label :contraseña %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :confirmacion_contraseña %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <div><strong> Dirección de entrega (opcional)</strong>
+    <br>
+    <br>
+    <%= f.fields_for :addresses do |address| %>
+      <%= address.label :nombre_completo %>
+      <%= address.text_field :full_name %>
 
+      <%= address.label :pais %>
+      <%= address.text_field :country %>
+
+      <%= address.label :codigo_postal %>
+      <%= address.text_field :zip %>
+
+      <%= address.label :Estado %>
+      <%= address.text_field :state %>
+     
+      <%= address.label :ciudad %>
+      <%= address.text_field :city %>
+     
+      <%= address.label :provincia %>
+      <%= address.text_field :province %>
+     
+      <%= address.label :calle %>
+      <%= address.text_field :street %>
+     
+      <%= address.label :numero%>
+      <%= address.text_field :number %>
+     
+      <%= address.label :interior %>
+      <%= address.text_field :int %>
+     
+     
+      <%= address.label :telefono %>
+      <%= address.text_field :zip %>
+
+  <% end %>
+  </div>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

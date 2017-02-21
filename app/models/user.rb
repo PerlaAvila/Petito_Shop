@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :cart
+  has_many :carts
+  has_many :addresses, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :addresses, allow_destroy: true#, reject_if: ->(attrs) { attrs['full_name'].blank? || attrs['country'].blank? || attrs['zip'].blank? || attrs['state'].blank? || attrs['city'].blank?  || attrs['street'].blank? || attrs['number'].blank? }
   has_many :registered_pets
   has_many :user_products
   has_many :products, :through => :user_products
