@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.addresses.first.build
   end
 
   def index

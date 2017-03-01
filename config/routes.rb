@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+  end
+
+
   get 'qr_codes/new'
   get 'qr_codes/create'
   get 'password_resets/new'
@@ -32,19 +37,4 @@ Rails.application.routes.draw do
 
 
 
-  SampleApp::Application.routes.draw do
-  get 'products/index', as: 'products'
-
-  get 'qr_codes/new'
-
-  get 'qr_codes/create'
-
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
-    default_url_options :host => "aqueous-wildwood-92497.herokuapp.com"
-
-    # ... snip ...
-  end
 end

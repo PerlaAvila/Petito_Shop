@@ -1,5 +1,5 @@
 <% provide(:title, @pet.pet_name) %>
-<div class="container pet-profile">
+<div class="container">
   <div class="well well-sm">
     <div class="col-sm-6 col-md-4">
         <% if @pet.avatar.file.nil? && current_user == @user %> 

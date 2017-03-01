@@ -16,6 +16,8 @@ gem 'puma',                    '3.4.0'
 gem 'jquery-rails',            '4.1.1'
 gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.4.1'
+gem 'font-awesome-sass', '~> 4.7.0'
+
 group :assets do
   gem 'therubyracer',   '0.12.3'
   gem 'sass-rails',     '5.0.6'

@@ -1,38 +1,41 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-        <br>
-          <% if @user.registered_pets.empty? %>
-            <h3> Aún no tienes mascotas registradas </h3>
-          <% else %>
-            <div id="user-pets">
-              <% @user.registered_pets.each do |pet| %>
-                <%= link_to "#{pet.pet_name}",registered_pet_path(pet) %>
-                <br>
-              <% end %>  
-            </div>
-          <% end %> 
-
-        <%= link_to "Registra tu mascota", new_registered_pet_path %>
-
-    </section>
-  </aside>
-</div>
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <ul class="nav nav-pills nav-stacked">
-                <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
-                <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "Domicilio de entrega", about_path %></li>
-                <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contact", contact_path %></li>
-            </ul>
-        </div>
-        <div class="col-md-9 well">
-            Vertical admin menu
-        </div>
-    </div>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+          <h1><%= @user.name %></h1>
+          <br>
+            <% if @user.registered_pets.empty? && @user.code == true %>
+              <h3> Aún no tienes mascotas registradas </h3>
+            <% else %>
+              <div id="user-pets">
+                <% @user.registered_pets.each do |pet| %>
+                  <%= link_to "#{pet.pet_name}",registered_pet_path(pet), class: "btn btn-primary" %>
+                  <br>
+                <% end %>  
+              </div>
+            <% end %> 
+                <% if @user.code == true %>
+                  <%= link_to "Registra tu mascota", new_registered_pet_path %>
+                <% end %>  
+
+
+      </section>
+    </aside>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <ul class="nav nav-pills nav-stacked">
+                  <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+                  <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "Domicilio de entrega", about_path %></li>
+                  <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contact", contact_path %></li>
+              </ul>
+          </div>
+          <div class="col-md-9 well">
+              Vertical admin menu
+          </div>
+      </div>
+  </div>
 </div>

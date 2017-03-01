@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220221649) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string   "full_name"
-    t.string   "country"
-    t.string   "zip"
-    t.string   "state"
-    t.string   "city"
-    t.string   "province"
-    t.string   "street"
-    t.string   "number"
-    t.string   "int"
-    t.string   "tel"
-    t.integer  "user_id"
-    t.integer  "true_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["true_id"], name: "index_addresses_on_true_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 20170225020706) do
 
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id"
@@ -81,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170220221649) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.boolean  "code",              default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
@@ -91,6 +73,13 @@ ActiveRecord::Schema.define(version: 20170220221649) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "province"
+    t.string   "street"
+    t.string   "number"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
